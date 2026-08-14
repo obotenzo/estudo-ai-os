@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumos e insights — Estudo de AI OS</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="row">
+    <span class="brand">🧠 Estudo de AI OS</span>
+    <span class="links">
+      <a href="index.html">Início</a>
+      <a href="g4.html">G4 OS</a>
+      <a href="conceito.html">Conceito</a>
+      <a href="massa.html">Mão na massa</a>
+      <a href="vibe.html">Vibe coding</a>
+      <a href="resumos.html" class="active">Resumos</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Resumos e insights</h1>
+    <p>Resumo do conteúdo de cada fonte do estudo, com os principais insights extraídos para o nosso AI OS. Conteúdo lido/coletado de cada link — não apenas metadados.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ G4 OS ============ -->
+  <section>
+    <h2><span class="tag">G4 OS</span>Resumos das fontes do G4</h2>
+
+    <div class="resumo">
+      <h3>Podcast "O Jogo da IA" (G4) — Spotify</h3>
+      <div class="src">Áudio · Tallis Gomes & João Vitor Chaves (com Yago Martins e Rafael Milagre do Viver de IA)</div>
+      <ul>
+        <li>A IA "deixou de ser tendência e virou jogo" — quem não entender joga em desvantagem.</li>
+        <li>Papo direto com quem está na linha de frente, sem hype nem teoria vazia.</li>
+        <li>Ep. 1 recebe Tallis e João Vitor: IA deixa de ser ferramenta e passa a ser <strong>vantagem competitiva</strong>.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> a tese de "contexto é rei" nasce aqui como posicionamento de negócio, não só técnico.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Ep. "Como o G4 está escalando usando IA" — Apple Podcasts</h3>
+      <div class="src">Áudio · 49 min · publicado 20/mar/2026</div>
+      <ul>
+        <li>Apresentado por Yago Martins e Rafael Milagre (fundadores do Viver de IA).</li>
+        <li>Discutem como a IA muda a criação, operação e escala de negócios na prática.</li>
+        <li>Tallis e João Vitor explicam como empresários estão (ou não) se adaptando.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> o G4 usa IA para escalar operações <em>sem</em> inflar o time — o modelo de "fazer mais com o mesmo".</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Post do Tallis no LinkedIn — definindo o G4 OS</h3>
+      <div class="src">Texto curto · LinkedIn</div>
+      <ul>
+        <li>Definição em uma frase: "falo com uma IA e ela distribui tarefas pro time no Slack".</li>
+        <li>Conexões citadas: CRM, ERP, Databricks e planilhas soltas.</li>
+        <li>"Enxerga a empresa" — o OS tem visibilidade dos dados de negócio.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> essa lista de integrações vira nosso <em>checklist de conexões</em> (camada 6).</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Vídeo "G4 OS | Implemente em 1 clique" — Facebook</h3>
+      <div class="src">Vídeo curto · Facebook</div>
+      <ul>
+        <li>Capacidades: lê/responde e-mails; puxa dados do negócio em tempo real.</li>
+        <li>Monitora e avisa quando algo muda; executa tarefas e cria conteúdo.</li>
+        <li>Ângulo "1 clique": promessa de OS pronto e acessível.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> o ciclo "monitora → avisa → executa" é exatamente nossa Orquestração + Saída.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>"The competitive advantage that matters in the AI era" — YouTube</h3>
+      <div class="src">Palestra · ~1h13 · canal G4 Business · ~68k views</div>
+      <ul>
+        <li>Tallis defende que a vantagem competitiva na era da IA é sobre <strong>contexto e uso</strong>, não só "ter uma IA".</li>
+        <li>Público: empreendedores/líderes; linguagem acessível.</li>
+        <li>Dá o "porquê" por trás do G4 OS.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> o OS não é ferramenta — é vantagem competitiva sustentada por contexto.</div>
+    </div>
+  </section>
+
+  <!-- ============ CONCEITO ============ -->
+  <section>
+    <h2><span class="tag">Conceito</span>Resumos das fontes de context engineering</h2>
+
+    <div class="resumo">
+      <h3>Anthropic — "Effective context engineering for AI agents"</h3>
+      <div class="src">Artigo técnico · publicado 29/set/2025</div>
+      <ul>
+        <li>Context engineering é a evolução do prompt engineering: não é "as palavras certas", é "qual configuração de contexto gera o comportamento desejado".</li>
+        <li>O agente em loop gera cada vez mais dados — o contexto tem de ser refinado ciclicamente.</li>
+        <li>Estratégias: context retrieval + agentic search (busca sob demanda) e structured note-taking (o agente anota em memória externa).</li>
+        <li>Para tarefas longas: mantém só o estado atual e descarrega o histórico em notas.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> "não faça do prompt o sistema de memória" — guarde fora do modelo e injete só o necessário.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Weaviate — "Context Engineering" (6 pilares)</h3>
+      <div class="src">Artigo · Weaviate (base vetorial)</div>
+      <ul>
+        <li>A janela de contexto é um recurso escasso (como um whiteboard que enche e apaga o velho).</li>
+        <li>Diferença entre demo bonito e sistema de produção é <strong>como</strong> a informação é selecionada/entregue a cada passo.</li>
+        <li>6 pilares: Memory, Selection, Compression, Contextual retrieval, Multi-step reasoning, State management.</li>
+        <li>Combina janela de contexto com memória de longo prazo (vector store) e decidir o que entra.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> trate a janela como orçamento de atenção — gaste só em tokens de alto sinal.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>MindStudio — "9 Components of an Agentic OS"</h3>
+      <div class="src">Artigo · MindStudio</div>
+      <ul>
+        <li>Um agentic OS é um padrão de componentes, não um produto.</li>
+        <li>Os 9: identity file, short-term memory, long-term memory, skills, planning layer, orchestration, handoff protocols, evaluation, guardrails.</li>
+        <li>Cada agente tem memória curta (contexto ativo) + longa (compartilhada em vector store) e busca semântica.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> use os 9 como checklist do projeto — é o esqueleto da nossa arquitetura.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Augment Code — "Agent Memory vs. Context Engineering"</h3>
+      <div class="src">Guia · Augment Code</div>
+      <ul>
+        <li>Memória = armazenamento externo que sobrevive à sessão (arquivos, DB, vector store).</li>
+        <li>Context engineering = selecionar/comprimir/injetar o que entra na janela finita.</li>
+        <li>3 camadas de persistência: context files (AGENTS.md, regras), agent memory (decisões com curadoria humana), living specs (intenção que evolui).</li>
+        <li>Memória sem context engineering vira "acumulo"; context engineering sem memória vira amnésia.</li>
+        <li>Mitigação: revisar memórias no fim da sessão (aprovar/editar/descartar).</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> a curadoria humana das memórias é o que evita contexto obsoleto contaminando o agente.</div>
+    </div>
+  </section>
+
+  <!-- ============ MÃO NA MASSA ============ -->
+  <section>
+    <h2><span class="tag">Mão na massa</span>Resumos dos frameworks</h2>
+
+    <div class="resumo">
+      <h3>Letta (antigo MemGPT) — site e pesquisa</h3>
+      <div class="src">Site oficial + blog de pesquisa</div>
+      <ul>
+        <li>Criado pelos autores do MemGPT (UC Berkeley Sky Computing Lab).</li>
+        <li>"Machines that learn" — agentes que lembram tudo, aprendem continuamente.</li>
+        <li>Conceitos-chave do blog: Memory Models (RL com memória), Context Constitution, Context Repositories (memória versionada via git), Sleep-time Compute (raciocina em idle, não na inferência), Continual Learning em token space.</li>
+        <li>Produto: Letta Agent — memória, identidade e capacidades evoluem com a experiência.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> a ideia de "sleep-time compute" é o agente organizar a própria memória enquanto ocioso — aplicável à nossa camada 4.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>A-MEM — Agentic Memory for LLM Agents (paper)</h3>
+      <div class="src">Paper arXiv:2502.12110 · NeurIPS 2025</div>
+      <ul>
+        <li>Sistema de memória que se organiza sozinho, seguindo o método Zettelkasten.</li>
+        <li>Ao adicionar memória: gera nota com contexto, keywords e tags; procura memórias históricas relacionadas e cria links.</li>
+        <li>Memória "evolui": novas memórias podem atualizar representações das antigas.</li>
+        <li>Rede de conhecimento interconectada, adaptável e consciente de contexto.</li>
+        <li>Supera baselines SOTA em 6 modelos de base.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> é a materialização técnica dos "insights acumulativos" (camada 4) — aprendizado que se conecta.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>AIOS — AI Agent Operating System (repo)</h3>
+      <div class="src">GitHub · agiresearch/AIOS · 6.2k stars · 859 commits</div>
+      <ul>
+        <li>"LLM as OS, Agents as Apps" — trata agents como processos gerenciados pelo SO.</li>
+        <li>Tem scheduler, gerenciamento de memória e contexto para múltiplos agents.</li>
+        <li>Inclui aios-rs (versão Rust) e documentação em docs.aios.foundation.</li>
+        <li>Papers de base: A-Mem, LiteCUA (computer-use), semantic file system, Cerebrum SDK.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> referência mais próxima de um "SO de verdade" para IA — use como modelo de orquestração quando crescer.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Vídeo "How to Build Your Own AI Operating System"</h3>
+      <div class="src">YouTube · arquitetura full-stack</div>
+      <ul>
+        <li>Quebra a arquitetura em 3 camadas: webhook triggers, scheduled workflows, agent layer.</li>
+        <li>Stack: Python/FastAPI (backend), Celery (filas), Redis (estado), Docker (deploy).</li>
+        <li>Foco em como disparar, agendar e orquestrar agents de forma confiável.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> a separação trigger / scheduler / agent é um bom ponto de partida prático para nosso backend.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Vídeo "I Built an AI Agent Operating System in 90 Days"</h3>
+      <div class="src">YouTube · relato prático</div>
+      <ul>
+        <li>Apresenta uma "company context layer" que dá a cada agente "memória".</li>
+        <li>Mostra como construir uma camada de memória/contexto para a organização.</li>
+        <li>Aborda o que funciona (e o que não) ao escalar agents num prazo real.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> a "context layer" dele espelha o G4 OS — memória compartilhada é o que dá coerência ao sistema.</div>
+    </div>
+  </section>
+
+  <!-- ============ VIBE ============ -->
+  <section>
+    <h2><span class="tag">Vibe coding</span>Resumos das ferramentas</h2>
+
+    <div class="resumo">
+      <h3>Comparativo Claude Code vs Codex vs Lovable vs Replit</h3>
+      <div class="src">XDA Developers + complemento (justinmckelvey.com, 2026)</div>
+      <ul>
+        <li><strong>Claude Code</strong> (terminal): melhor disciplina de "ficar no escopo" — edita só o que pediu. Ótimo para refatoração e revisão. Modelo padrão Claude Sonnet 4.6.</li>
+        <li><strong>Codex</strong> (terminal, OpenAI): mais autônomo/agressivo — termina trabalho em massa (renomear em 47 arquivos, migrações) mas gera diffs grandes.</li>
+        <li><strong>Lovable</strong> (browser): mais polido para não-devs (React+Tailwind+Supabase, hosting incluso). Stack opinativo, difícil de mudar.</li>
+        <li><strong>Replit</strong> (browser): Linux real na nuvem com armazenamento persistente — bom para colaboração e protótipos.</li>
+        <li>Modelo importa mais que interface: "escolha o cérebro, depois a carcaça".</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> pra nosso OS, Claude Code/Codex para lógica + Lovable para a UI — e os dois sincronizam via GitHub.</div>
+    </div>
+
+    <div class="resumo">
+      <h3>Reddit — "Build Lovable for Claude Code users. No Costs."</h3>
+      <div class="src">Thread r/ClaudeAI</div>
+      <ul>
+        <li>Usuários combinam Lovable (gera a estrutura/app) com Claude Code (lógica, integrações, Stripe, etc.).</li>
+        <li>Uso de GitHub sync para manter tudo versionado e evitar divergência entre ferramentas.</li>
+        <li>Claude Code "one-shots" projetos que custariam caro no Lovable; Lovable faz a parte visual.</li>
+      </ul>
+      <div class="ins"><b>Insight:</b> o fluxo "Lovable cria, Claude Code conecta" é exatamente o nosso modo de construir com vibe coding.</div>
+    </div>
+  </section>
+
+  <p><a class="back" href="index.html">← Voltar ao início</a></p>
+
+</main>
+
+<footer>
+  Repositório <strong>estudo-ai-os</strong> · documentação e base de estudo · resumos de fontes gratuitas · atualizado em 13/08/2026
+</footer>
+</body>
+</html>

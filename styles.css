@@ -91,6 +91,13 @@ ul.links .meta{color:var(--muted); font-size:13px; margin-top:6px}
 .li-take{margin-top:10px; font-size:13.5px; color:var(--accent2); border-top:1px dashed var(--border); padding-top:9px}
 .li-take b{color:var(--accent2)}
 .pill{display:inline-block; font-size:11px; padding:2px 8px; border-radius:99px; background:#222a3a; color:var(--accent2); border:1px solid var(--border); margin-right:6px}
+.resumo{border-left:4px solid var(--accent); background:var(--bg2); border-radius:0 12px 12px 0; padding:16px 20px; margin:16px 0}
+.resumo h3{margin:0 0 4px; font-size:18px; color:#fff}
+.resumo .src{font-size:12.5px; color:var(--muted); margin-bottom:10px}
+.resumo ul{list-style:none; padding:0; margin:0}
+.resumo ul li{background:none; border:none; padding:4px 0 4px 18px; position:relative; color:var(--txt); font-size:14.5px}
+.resumo ul li::before{content:"▸"; position:absolute; left:0; color:var(--accent)}
+.resumo .ins{margin-top:11px; font-size:13.5px; color:var(--accent2); border-top:1px dashed var(--border); padding-top:9px}
 
 .callout{border-left:3px solid var(--accent3); background:var(--bg2); padding:14px 18px; border-radius:0 12px 12px 0; margin-top:18px; color:var(--muted); font-size:15px}
 .callout strong{color:var(--accent3)}
