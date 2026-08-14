@@ -4,147 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Estudo de AI OS — documentação e base de estudo</title>
-<style>
-  :root{
-    --bg:#0d0f14; --bg2:#151922; --card:#1b202b; --border:#2b313d;
-    --txt:#e8ebf2; --muted:#98a2b3; --accent:#5b8cff; --accent2:#7ee0c0;
-    --accent3:#ffb86b; --maxw:920px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--txt);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.65; font-size:17px;
-  }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
-  header{
-    background:radial-gradient(1200px 400px at 20% -10%,rgba(91,140,255,.18),transparent),
-               linear-gradient(135deg,#14181f,#0d0f14);
-    border-bottom:1px solid var(--border); padding:54px 20px 40px;
-  }
-  h1{font-size:36px; margin:0 0 10px; letter-spacing:-.6px; font-weight:700}
-  header p{color:var(--muted); margin:0; font-size:18px; max-width:680px}
-  nav.toc{margin-top:20px; display:flex; flex-wrap:wrap; gap:8px}
-  nav.toc a{
-    font-size:13px; background:var(--card); border:1px solid var(--border);
-    padding:7px 13px; border-radius:99px; color:var(--muted); text-decoration:none;
-    transition:.15s;
-  }
-  nav.toc a:hover{color:var(--txt); border-color:var(--accent)}
-
-  main{padding:36px 0 64px}
-  section{margin:0 0 50px; scroll-margin-top:20px}
-  h2{
-    font-size:25px; margin:0 0 6px; padding-bottom:12px;
-    border-bottom:1px solid var(--border); letter-spacing:-.3px;
-  }
-  h2 .tag{
-    font-size:12px; text-transform:uppercase; letter-spacing:1.2px;
-    color:var(--accent2); display:block; font-weight:600; margin-bottom:3px;
-  }
-  h3{font-size:19px; margin:26px 0 10px; color:#fff}
-
-  p{margin:0 0 14px}
-  a{color:var(--accent)}
-  .muted{color:var(--muted)}
-  strong{color:#fff}
-
-  .lead{
-    background:var(--bg2); border:1px solid var(--border); border-radius:16px;
-    padding:24px 26px; margin-top:18px; font-size:18px;
-  }
-  .lead p:last-child{margin:0}
-
-  /* architecture diagram */
-  .arch{margin:22px 0 8px; display:flex; flex-direction:column; gap:0}
-  .arch-row{display:flex; align-items:stretch; gap:14px; flex-wrap:wrap}
-  .node{
-    flex:1 1 0; min-width:150px; background:var(--card); border:1px solid var(--border);
-    border-radius:12px; padding:14px 16px;
-  }
-  .node .t{font-weight:700; color:#fff; font-size:15px}
-  .node .d{color:var(--muted); font-size:13px; margin-top:3px}
-  .arrow{text-align:center; color:var(--accent); font-size:22px; line-height:1; padding:6px 0}
-  .node.mem{background:linear-gradient(135deg,#1d2533,#1b202b); border-color:#36507e}
-  .node.ins{background:linear-gradient(135deg,#1f2a24,#1b202b); border-color:#2f6a55}
-
-  /* layer cards */
-  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; margin-top:18px}
-  .layer{
-    background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 18px;
-  }
-  .layer .n{
-    display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px;
-    border-radius:8px; background:rgba(91,140,255,.15); color:var(--accent);
-    font-weight:700; font-size:14px; margin-bottom:8px;
-  }
-  .layer h4{margin:0 0 6px; font-size:16px; color:#fff}
-  .layer p{margin:0; color:var(--muted); font-size:14px}
-
-  /* steps */
-  .steps{margin-top:20px; display:flex; flex-direction:column; gap:0}
-  .step{display:flex; gap:16px; padding:14px 0; position:relative}
-  .step:not(:last-child)::before{
-    content:""; position:absolute; left:17px; top:42px; bottom:-2px; width:2px;
-    background:linear-gradient(var(--border),transparent);
-  }
-  .step .num{
-    flex:0 0 36px; height:36px; border-radius:50%; display:flex; align-items:center;
-    justify-content:center; background:var(--accent); color:#0d0f14; font-weight:800; font-size:15px;
-    z-index:1;
-  }
-  .step .body{flex:1}
-  .step .body h4{margin:4px 0 4px; font-size:16px; color:#fff}
-  .step .body p{margin:0; color:var(--muted); font-size:14.5px}
-
-  ul.links{list-style:none; padding:0; margin:18px 0 0}
-  ul.links li{
-    background:var(--card); border:1px solid var(--border); border-radius:12px;
-    padding:16px 18px; margin:0 0 12px; transition:border-color .15s;
-  }
-  ul.links li:hover{border-color:var(--accent)}
-  ul.links li a{color:var(--accent); text-decoration:none; font-weight:600; font-size:17px}
-  ul.links li a:hover{text-decoration:underline}
-  ul.links .desc{color:var(--muted); font-size:15px; margin-top:4px}
-  ul.links .meta{color:var(--muted); font-size:13px; margin-top:6px}
-  .pill{
-    display:inline-block; font-size:11px; padding:2px 8px; border-radius:99px;
-    background:#222a3a; color:var(--accent2); border:1px solid var(--border); margin-right:6px;
-  }
-
-  .callout{
-    border-left:3px solid var(--accent3); background:var(--bg2);
-    padding:14px 18px; border-radius:0 12px 12px 0; margin-top:18px; color:var(--muted); font-size:15px;
-  }
-
-  footer{
-    border-top:1px solid var(--border); padding:26px 20px; color:var(--muted);
-    font-size:14px; text-align:center;
-  }
-  @media(max-width:560px){ h1{font-size:28px} .arch-row{flex-direction:column} }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
+
+<nav class="topnav">
+  <div class="row">
+    <span class="brand">🧠 Estudo de AI OS</span>
+    <span class="links">
+      <a href="index.html" class="active">Início</a>
+      <a href="g4.html">G4 OS</a>
+      <a href="conceito.html">Conceito</a>
+      <a href="massa.html">Mão na massa</a>
+      <a href="vibe.html">Vibe coding</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
   <div class="wrap">
     <h1>Estudo de AI OS</h1>
     <p>Documentação e base de estudo para a construção de um sistema operacional de IA pessoal, com referência no G4 OS.</p>
-    <nav class="toc">
-      <a href="#intro">Introdução</a>
-      <a href="#arquitetura">Arquitetura</a>
-      <a href="#passos">Passo a passo</a>
-      <a href="#g4">G4 OS</a>
-      <a href="#conceito">Conceito</a>
-      <a href="#massa">Mão na massa</a>
-      <a href="#vibe">Vibe coding</a>
-    </nav>
   </div>
 </header>
 
 <main class="wrap">
 
-  <!-- ============ INTRO ============ -->
   <section id="intro">
     <h2><span class="tag">Documentação e base de estudos</span>O que é um AI OS</h2>
     <div class="lead">
@@ -152,9 +37,8 @@
       <p>Um AI OS não é um produto pronto — é uma <strong>arquitetura</strong>. É o conjunto de camadas que transforma um modelo de linguagem, que sozinho não lembra nada entre sessões, em um sistema com <strong>identidade, memória e estado persistente</strong>.</p>
     </div>
 
-    <h3 id="arquitetura">Arquitetura de um AI OS</h3>
+    <h3>Arquitetura de um AI OS</h3>
     <p class="muted">O fluxo abaixo mostra como as peças se conectam. A seta central é a <strong>camada de contexto</strong> — o que decide, a cada momento, o que o modelo "sabe".</p>
-
     <div class="arch">
       <div class="arch-row">
         <div class="node"><div class="t">Entrada</div><div class="d">comando em linguagem natural, evento ou gatilho</div></div>
@@ -174,7 +58,6 @@
         <div class="node"><div class="t">Saída</div><div class="d">resposta, tarefa executada, decisão registrada</div></div>
       </div>
     </div>
-
     <div class="callout">
       <strong>Contexto é rei.</strong> O modelo não "sabe" de nada por padrão. Tudo depende do que é carregado na janela dele e de como isso é acumulado ao longo do tempo. Por isso a camada de contexto — não o modelo em si — é o coração de um AI OS.
     </div>
@@ -182,128 +65,55 @@
     <h3>Camadas em detalhe</h3>
     <div class="grid">
       <div class="layer"><div class="n">1</div><h4>Contexto ativo</h4><p>O que está "na tela" do modelo agora: a tarefa, as instruções e as últimas mensagens. É volátil e limitado em tamanho.</p></div>
-      <div class="layer"><div class="n">2</div><h4>Memória de curto prazo</h4><p>A "RAM" do agente: mantém o estado da tarefa em andamento, o que foi feito e o que falta. Some quando a tarefa termina.</p></div>
+      <div class="layer"><div class="n">2</div><h4>Memória de curto prazo</h4><p>A "RAM" do agente: mantém o estado da tarefa em andamento. Some quando a tarefa termina.</p></div>
       <div class="layer"><div class="n">3</div><h4>Memória de longo prazo</h4><p>Sobrevive entre sessões. Armazena preferências, fatos, decisões e histórico em arquivos ou base vetorial.</p></div>
-      <div class="layer"><div class="n">4</div><h4>Insights acumulativos</h4><p>Memória que se organiza sozinha (ex.: método Zettelkasten). Conecta aprendizados e melhora com o uso.</p></div>
+      <div class="layer"><div class="n">4</div><h4>Insights acumulativos</h4><p>Memória que se organiza sozinha (ex.: Zettelkasten). Conecta aprendizados e melhora com o uso.</p></div>
       <div class="layer"><div class="n">5</div><h4>Orquestração</h4><p>Como o sistema recebe uma intenção e a transforma em passos: planeja, chama ferramentas e coordena agentes.</p></div>
-      <div class="layer"><div class="n">6</div><h4>Conexões</h4><p>Integrações com sistemas externos (e-mail, planilhas, bancos de dados, APIs) que dão "corpo" ao OS.</p></div>
+      <div class="layer"><div class="n">6</div><h4>Conexões</h4><p>Integrações com sistemas externos (e-mail, planilhas, bancos, APIs) que dão "corpo" ao OS.</p></div>
     </div>
 
-    <h3 id="passos">Passo a passo para construir</h3>
-    <p class="muted">Roteiro de estudo e implementação, na ordem sugerida. Cada etapa aponta para o material correspondente mais abaixo.</p>
+    <h3>Passo a passo para construir</h3>
+    <p class="muted">Roteiro de estudo e implementação, na ordem sugerida. Cada etapa aponta para a seção correspondente.</p>
     <div class="steps">
-      <div class="step"><div class="num">1</div><div class="body"><h4>Entender a tese (G4 OS)</h4><p>Consumir o podcast "O Jogo da IA" e o material do Tallis Gomes para internalizar o conceito de sistema operacional de IA conectado à empresa. <a href="#g4">→ Fontes G4 OS</a></p></div></div>
-      <div class="step"><div class="num">2</div><div class="body"><h4>Estudar context engineering</h4><p>Ler a documentação da Anthropic e da Weaviate sobre como montar e gerenciar a camada de contexto. <a href="#conceito">→ Conceito</a></p></div></div>
-      <div class="step"><div class="num">3</div><div class="body"><h4>Mapear os 9 componentes</h4><p>Usar o checklist do MindStudio (identidade, memórias, skills, planejamento, orquestração, guardrails) como esqueleto do projeto. <a href="#conceito">→ Conceito</a></p></div></div>
-      <div class="step"><div class="num">4</div><div class="body"><h4>Escolher a base de memória</h4><p>Avaliar Letta (agentes stateful), A-MEM (memória que evolui) e AIOS (LLM como SO) como fundação técnica. <a href="#massa">→ Mão na massa</a></p></div></div>
-      <div class="step"><div class="num">5</div><div class="body"><h4>Montar o primeiro agente</h4><p>Subir um agente com memória persistente usando os frameworks open source e validar a retenção entre sessões. <a href="#massa">→ Mão na massa</a></p></div></div>
-      <div class="step"><div class="num">6</div><div class="body"><h4>Conectar sistemas externos</h4><p>Integrar planilhas, e-mail ou APIs para o OS "enxergar" dados reais, como no G4. <a href="#g4">→ Referência G4 OS</a></p></div></div>
-      <div class="step"><div class="num">7</div><div class="body"><h4>Construir com vibe coding</h4><p>Usar Claude Code / Codex / Lovable para escrever o código a partir de descrições em linguagem natural. <a href="#vibe">→ Vibe coding</a></p></div></div>
+      <div class="step"><div class="num">1</div><div class="body"><h4>Entender a tese (G4 OS)</h4><p>Consumir o podcast "O Jogo da IA" e o material do Tallis Gomes para internalizar o conceito de sistema operacional de IA conectado à empresa. <a href="g4.html">→ G4 OS</a></p></div></div>
+      <div class="step"><div class="num">2</div><div class="body"><h4>Estudar context engineering</h4><p>Ler a documentação da Anthropic e da Weaviate sobre como montar e gerenciar a camada de contexto. <a href="conceito.html">→ Conceito</a></p></div></div>
+      <div class="step"><div class="num">3</div><div class="body"><h4>Mapear os 9 componentes</h4><p>Usar o checklist do MindStudio como esqueleto do projeto. <a href="conceito.html">→ Conceito</a></p></div></div>
+      <div class="step"><div class="num">4</div><div class="body"><h4>Escolher a base de memória</h4><p>Avaliar Letta, A-MEM e AIOS como fundação técnica. <a href="massa.html">→ Mão na massa</a></p></div></div>
+      <div class="step"><div class="num">5</div><div class="body"><h4>Montar o primeiro agente</h4><p>Subir um agente com memória persistente e validar a retenção entre sessões. <a href="massa.html">→ Mão na massa</a></p></div></div>
+      <div class="step"><div class="num">6</div><div class="body"><h4>Conectar sistemas externos</h4><p>Integrar planilhas, e-mail ou APIs para o OS "enxergar" dados reais. <a href="g4.html">→ G4 OS</a></p></div></div>
+      <div class="step"><div class="num">7</div><div class="body"><h4>Construir com vibe coding</h4><p>Usar Claude Code / Codex / Lovable para escrever o código a partir de descrições em linguagem natural. <a href="vibe.html">→ Vibe coding</a></p></div></div>
       <div class="step"><div class="num">8</div><div class="body"><h4>Iterar e documentar</h4><p>Registrar decisões, arquitetura e aprendizados neste repositório, mantendo a base de estudo atualizada.</p></div></div>
     </div>
   </section>
 
-  <!-- ============ G4 ============ -->
-  <section id="g4">
-    <h2><span class="tag">Âncora (BR)</span>G4 OS — por onde começar</h2>
-    <ul class="links">
-      <li>
-        <a href="https://open.spotify.com/playlist/0QUiQS8rmrE89OeQLvssjO" target="_blank" rel="noopener">Podcast "O Jogo da IA" (G4) — Spotify</a>
-        <div class="desc">O programa do Tallis Gomes e do João Vitor Chaves. É a fonte direta da tese de "contexto é rei" e do uso real de IA nas empresas deles.</div>
-      </li>
-      <li>
-        <a href="https://podcasts.apple.com/ch/podcast/como-g4-est%C3%A1-escalando-ainda-mais-usando-intelig%C3%AAncia/id1525781152?i=1000756380188" target="_blank" rel="noopener">Ep. "Como o G4 está escalando usando IA" — Apple Podcasts</a>
-        <div class="desc">Episódio de entrada para entender a aplicação prática.</div>
-      </li>
-      <li>
-        <a href="https://pt.linkedin.com/posts/tallisgomes_eu-falo-com-uma-ia-e-ela-distribui-tarefas-activity-7436787894305939458-XpmV" target="_blank" rel="noopener">Post do Tallis no LinkedIn explicando o G4 OS</a>
-        <div class="desc">Ele descreve literalmente: "falo com uma IA e ela distribui tarefas pro time no Slack… conecta ao CRM, ERP, planilhas. Enxerga a empresa." É a definição prática do que você quer construir.</div>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/tallisgomes87/videos/g4-os-implemente-em-1-clique/1573317461039059/" target="_blank" rel="noopener">Vídeo "G4 OS | Implemente em 1 clique" (Facebook)</a>
-        <div class="desc">Mostra as capacidades que ele vende: lê/responde e-mail, puxa dados do negócio em tempo real, monitora mudanças e executa tarefas.</div>
-      </li>
-      <li>
-        <a href="https://www.youtube.com/watch?v=670zVqYbD9s" target="_blank" rel="noopener">"The competitive advantage that matters in the AI era" (YouTube, Tallis Gomes)</a>
-        <div class="desc">Fala de 1h13 com a tese por trás do OS. Bom para entender o posicionamento.</div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============ CONCEITO ============ -->
-  <section id="conceito">
-    <h2><span class="tag">Fundamento</span>Conceito — contexto é rei e arquitetura de memória</h2>
-    <ul class="links">
-      <li>
-        <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — "Effective context engineering for AI agents"</a>
-        <div class="desc">Texto obrigatório. Manual prático de como montar a camada de contexto: recuperação, "note-taking" do agente e memória persistente fora da janela de contexto.</div>
-        <div class="meta"><span class="pill">EN</span>artigo técnico</div>
-      </li>
-      <li>
-        <a href="https://weaviate.io/blog/context-engineering" target="_blank" rel="noopener">Weaviate — "Context Engineering" (os 6 pilares)</a>
-        <div class="desc">Desenho completo combinando janela de contexto com memória de longo prazo (base vetorial) e seleção do que entra a cada passo.</div>
-        <div class="meta"><span class="pill">EN</span>artigo</div>
-      </li>
-      <li>
-        <a href="https://www.mindstudio.ai/blog/how-to-build-agentic-operating-system-9-components" target="_blank" rel="noopener">MindStudio — "9 Components of an Agentic OS"</a>
-        <div class="desc">O "mapa de arquitetura": identity file, short-term memory, long-term memory, skills, planning, orchestration, handoff, evaluation e guardrails. Use como checklist do seu projeto.</div>
-        <div class="meta"><span class="pill">EN</span>artigo</div>
-      </li>
-      <li>
-        <a href="https://www.augmentcode.com/guides/agent-memory-vs-context-engineering" target="_blank" rel="noopener">Augment Code — "Agent Memory vs. Context Engineering"</a>
-        <div class="desc">Esclarece as 3 camadas de persistência (context files, agent memory, living specs) e a diferença entre "memória" e "engenharia de contexto".</div>
-        <div class="meta"><span class="pill">EN</span>guia</div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============ MÃO NA MASSA ============ -->
-  <section id="massa">
-    <h2><span class="tag">Prática</span>Mão na massa — construir o seu OS</h2>
-    <ul class="links">
-      <li>
-        <a href="https://www.letta.com/" target="_blank" rel="noopener">Letta (antigo MemGPT) — site</a>
-        <div class="desc">Framework open source de agentes stateful que lembram tudo. Caminho mais direto para ter memória persistente rodando.</div>
-        <div class="meta"><span class="pill">open source</span><a href="https://github.com/letta-ai/letta" target="_blank" rel="noopener">GitHub</a></div>
-      </li>
-      <li>
-        <a href="https://arxiv.org/abs/2502.12110" target="_blank" rel="noopener">A-MEM — Agentic Memory for LLM Agents (paper)</a>
-        <div class="desc">Sistema de memória que se organiza sozinho (método Zettelkasten). A referência técnica de "memória que evolui" — seu conceito de insights acumulativos.</div>
-        <div class="meta"><span class="pill">paper + código</span><a href="https://github.com/agiresearch/a-mem" target="_blank" rel="noopener">GitHub</a></div>
-      </li>
-      <li>
-        <a href="https://github.com/agiresearch/AIOS" target="_blank" rel="noopener">AIOS — AI Agent Operating System (repositório)</a>
-        <div class="desc">Implementação real de "LLM como SO": gerencia agents como processos, com scheduler, memória e contexto. Veja código de um OS de IA funcionando.</div>
-        <div class="meta"><span class="pill">open source</span></div>
-      </li>
-      <li>
-        <a href="https://www.youtube.com/watch?v=rZX1OYetbSM" target="_blank" rel="noopener">"How to Build Your Own AI Operating System" (vídeo)</a>
-        <div class="desc">Quebra a arquitetura em 3 camadas (webhook triggers, scheduled workflows, agent layer) com FastAPI/Celery/Redis/Docker. Mão na massa pesada.</div>
-        <div class="meta"><span class="pill">vídeo</span></div>
-      </li>
-      <li>
-        <a href="https://www.youtube.com/watch?v=2s_olItq3P4" target="_blank" rel="noopener">"I Built an AI Agent Operating System in 90 Days" (vídeo)</a>
-        <div class="desc">Relato prático com "company context layer" dando memória aos agents.</div>
-        <div class="meta"><span class="pill">vídeo</span></div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============ VIBE ============ -->
-  <section id="vibe">
-    <h2><span class="tag">Ferramentas</span>Vibe coding — com o que construir</h2>
-    <ul class="links">
-      <li>
-        <a href="https://www.xda-developers.com/tested-claude-code-lovable-and-replit-side-by-side/" target="_blank" rel="noopener">Comparativo Claude Code vs Codex vs Lovable vs Replit (XDA)</a>
-        <div class="desc">Lado a lado, para decidir com o que codar seu OS.</div>
-        <div class="meta"><span class="pill">artigo</span></div>
-      </li>
-      <li>
-        <a href="https://www.reddit.com/r/ClaudeAI/comments/1o6kspo/build_lovable_for_claude_code_users_no_costs/" target="_blank" rel="noopener">Reddit — fluxo usando Claude Code/Codex/Lovable juntos via GitHub</a>
-        <div class="desc">Como misturar as ferramentas sincronizando via GitHub.</div>
-        <div class="meta"><span class="pill">thread</span></div>
-      </li>
-    </ul>
+  <section id="paginas">
+    <h2><span class="tag">Navegação</span>Seções do estudo</h2>
+    <div class="subpages">
+      <a class="subpage" href="g4.html">
+        <div class="k">Âncora (BR)</div>
+        <h4>G4 OS</h4>
+        <p>Podcast "O Jogo da IA", posts do Tallis Gomes e a definição prática de um OS conectado à empresa.</p>
+        <div class="go">Abrir →</div>
+      </a>
+      <a class="subpage" href="conceito.html">
+        <div class="k">Fundamento</div>
+        <h4>Conceito</h4>
+        <p>Context engineering, os 6 pilares e os 9 componentes de um agentic OS.</p>
+        <div class="go">Abrir →</div>
+      </a>
+      <a class="subpage" href="massa.html">
+        <div class="k">Prática</div>
+        <h4>Mão na massa</h4>
+        <p>Letta, A-MEM e AIOS — as fundações técnicas para construir seu OS com memória.</p>
+        <div class="go">Abrir →</div>
+      </a>
+      <a class="subpage" href="vibe.html">
+        <div class="k">Ferramentas</div>
+        <h4>Vibe coding</h4>
+        <p>Claude Code, Codex, Lovable e Replit — com o que construir na prática.</p>
+        <div class="go">Abrir →</div>
+      </a>
+    </div>
   </section>
 
 </main>

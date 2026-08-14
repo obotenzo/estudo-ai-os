@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conceito — Estudo de AI OS</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="row">
+    <span class="brand">🧠 Estudo de AI OS</span>
+    <span class="links">
+      <a href="index.html">Início</a>
+      <a href="g4.html">G4 OS</a>
+      <a href="conceito.html" class="active">Conceito</a>
+      <a href="massa.html">Mão na massa</a>
+      <a href="vibe.html">Vibe coding</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Conceito</h1>
+    <p>Context engineering e a arquitetura de memória por trás de um AI OS — o fundamento técnico antes de escrever código.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2><span class="tag">Fundamento</span>Context engineering: o coração do OS</h2>
+    <div class="lead">
+      <p><strong>Context engineering</strong> é a disciplina de selecionar, comprimir e injetar o que o modelo precisa saber em cada momento. Não é sobre "dar mais contexto" — é sobre dar o <strong>contexto certo</strong>.</p>
+      <p>Um modelo sozinho tem apenas a janela de contexto (a "RAM"). Tudo que ele sabe vem do que é carregado ali. Por isso a camada de contexto — não o modelo — decide a qualidade do sistema.</p>
+    </div>
+
+    <h3>Os seis pilares (Weaviate)</h3>
+    <p class="muted">Resumo do framework de context engineering: combinar a janela de contexto com memória de longo prazo e decidir o que entra a cada passo.</p>
+    <div class="grid">
+      <div class="layer"><div class="n">1</div><h4>Memory</h4><p>Memória de longo prazo (persistente), geralmente em base vetorial ou arquivos.</p></div>
+      <div class="layer"><div class="n">2</div><h4>Selection</h4><p>Escolher, entre o que existe, o que realmente importa para a tarefa atual.</p></div>
+      <div class="layer"><div class="n">3</div><h4>Compression</h4><p>Reduzir o que é irrelevante para caber na janela sem perder o essencial.</p></div>
+      <div class="layer"><div class="n">4</div><h4>Contextual retrieval</h4><p>Buscar o conteúdo certo no momento certo (RAG, busca semântica).</p></div>
+      <div class="layer"><div class="n">5</div><h4>Multi-step reasoning</h4><p>Manter coerência ao longo de várias etapas de raciocínio.</p></div>
+      <div class="layer"><div class="n">6</div><h4>State management</h4><p>Gerenciar o estado da conversa e da tarefa entre passos.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Anthropic</span>Estratégias práticas de contexto</h2>
+    <p>Segundo a Anthropic, agentes montam a compreensão <strong>camada por camada</strong>, mantendo apenas o necessário na memória de trabalho e usando <strong>note-taking</strong> para persistir o resto. Duas técnicas centrais:</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="body"><h4>Context retrieval + agentic search</h4><p>O agente busca informação sob demanda em vez de carregar tudo de uma vez — mantém a janela enxuta.</p></div></div>
+      <div class="step"><div class="num">2</div><div class="body"><h4>Structured note-taking (agentic memory)</h4><p>O agente escreve notas periodicamente em memória externa. Isso dá persistência com overhead mínimo entre sessões.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="body"><h4>Long-horizon tasks</h4><p>Para tarefas longas, o agente mantém apenas o estado atual e descarrega o histórico em notas — evitando estourar a janela.</p></div></div>
+    </div>
+    <div class="callout">
+      <strong>Regra de ouro.</strong> "Não faça do prompt o sistema de memória." Guarde a memória fora do modelo e injete só o necessário em cada passo. Isso é o que separa um agente que "esquece tudo" de um AI OS.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Anatomia</span>Os 9 componentes de um Agentic OS (MindStudio)</h2>
+    <p class="muted">Use esta lista como <strong>checklist</strong> do seu projeto. Cada item é uma camada ou capacidade que precisa existir.</p>
+    <ul class="links">
+      <li><a href="#">1. Identity file</a><div class="desc">Quem o agente é: nome, papel, restrições, tom. Define a "personalidade" persistente.</div></li>
+      <li><a href="#">2. Short-term memory</a><div class="desc">O estado da tarefa em andamento — a "RAM" do agente.</div></li>
+      <li><a href="#">3. Long-term memory</a><div class="desc">O que persiste entre sessões (fatos, preferências, histórico).</div></li>
+      <li><a href="#">4. Skills</a><div class="desc">Capacidades reutilizáveis que o agente sabe executar (ex.: "resumir", "buscar").</div></li>
+      <li><a href="#">5. Planning layer</a><div class="desc">Como o agente quebra uma intenção em passos e decide a ordem.</div></li>
+      <li><a href="#">6. Orchestration</a><div class="desc">Como múltiplos agentes/sistemas são coordenados.</div></li>
+      <li><a href="#">7. Handoff protocols</a><div class="desc">Como a tarefa é passada de um agente para outro sem perder contexto.</div></li>
+      <li><a href="#">8. Evaluation</a><div class="desc">Como medir se o agente está acertando e melhorar.</div></li>
+      <li><a href="#">9. Guardrails</a><div class="desc">Limites de segurança: o que o agente não pode fazer.</div></li>
+    </ul>
+    <p class="muted">Fonte completa: <a href="https://www.mindstudio.ai/blog/how-to-build-agentic-operating-system-9-components" target="_blank" rel="noopener">MindStudio — 9 Components of an Agentic OS</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="tag">Persistência</span>Memória vs. Context engineering (Augment)</h2>
+    <p>Dois conceitos que confundem no início — e a diferença importa na arquitetura:</p>
+    <div class="grid">
+      <div class="layer"><div class="n">M</div><h4>Agent memory</h4><p>Armazenamento <strong>externo</strong> que sobrevive ao fim da sessão: arquivos, bancos, base vetorial. Persiste por dias, semanas, meses.</p></div>
+      <div class="layer"><div class="n">C</div><h4>Context engineering</h4><p>A disciplina de <strong>selecionar e injetar</strong> essa memória na janela finita do modelo, turno a turno.</p></div>
+    </div>
+    <div class="callout">
+      <strong>Armadilhas.</strong> Adicionar memória sem saber como carregá-la afoga o agente em contexto obsoleto. Engenharia de contexto sem memória faz o agente recomeçar do zero toda sessão. Os dois andam juntos.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Leitura</span>Fontes de conceito</h2>
+    <ul class="links">
+      <li>
+        <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — "Effective context engineering for AI agents"</a>
+        <div class="desc">Texto obrigatório. Manual prático de como montar a camada de contexto: recuperação, note-taking e memória persistente.</div>
+        <div class="meta"><span class="pill">EN</span>artigo técnico</div>
+      </li>
+      <li>
+        <a href="https://weaviate.io/blog/context-engineering" target="_blank" rel="noopener">Weaviate — "Context Engineering" (os 6 pilares)</a>
+        <div class="desc">Desenho completo combinando janela de contexto com memória de longo prazo e seleção por passo.</div>
+        <div class="meta"><span class="pill">EN</span>artigo</div>
+      </li>
+      <li>
+        <a href="https://www.mindstudio.ai/blog/how-to-build-agentic-operating-system-9-components" target="_blank" rel="noopener">MindStudio — "9 Components of an Agentic OS"</a>
+        <div class="desc">O mapa de arquitetura usado como checklist nesta página.</div>
+        <div class="meta"><span class="pill">EN</span>artigo</div>
+      </li>
+      <li>
+        <a href="https://www.augmentcode.com/guides/agent-memory-vs-context-engineering" target="_blank" rel="noopener">Augment Code — "Agent Memory vs. Context Engineering"</a>
+        <div class="desc">Esclarece as 3 camadas de persistência e a diferença entre memória e engenharia de contexto.</div>
+        <div class="meta"><span class="pill">EN</span>guia</div>
+      </li>
+    </ul>
+  </section>
+
+  <p><a class="back" href="index.html">← Voltar ao início</a></p>
+
+</main>
+
+<footer>
+  Repositório <strong>estudo-ai-os</strong> · documentação e base de estudo · material curado e gratuito · atualizado em 13/08/2026
+</footer>
+</body>
+</html>

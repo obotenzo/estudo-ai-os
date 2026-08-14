@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G4 OS — Estudo de AI OS</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="row">
+    <span class="brand">🧠 Estudo de AI OS</span>
+    <span class="links">
+      <a href="index.html">Início</a>
+      <a href="g4.html" class="active">G4 OS</a>
+      <a href="conceito.html">Conceito</a>
+      <a href="massa.html">Mão na massa</a>
+      <a href="vibe.html">Vibe coding</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>G4 OS</h1>
+    <p>A âncora brasileira do estudo: o sistema operacional de IA do Tallis Gomes e do G4, referência prática para o que queremos construir.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2><span class="tag">Visão geral</span>O que é o G4 OS</h2>
+    <div class="lead">
+      <p>O <strong>G4 OS</strong> é o sistema operacional de IA construído internamente no G4 (empresa de educação empreendedora do Tallis Gomes). A ideia central é simples de descrever: <strong>você fala com uma IA e ela distribui tarefas para o time, conectada a CRM, ERP, planilhas, Slack e banco de dados</strong>.</p>
+      <p>Em vez de cada ferramenta viver isolada, o OS "enxerga a empresa" — puxa dados em tempo real, monitora mudanças e executa ações. É exatamente esse comportamento de <strong>sistema conectado e com memória</strong> que serve de modelo para o nosso AI OS pessoal.</p>
+    </div>
+
+    <h3>Por que usá-lo como referência</h3>
+    <div class="grid">
+      <div class="layer"><div class="n">A</div><h4>Tese aplicada</h4><p>Não é teoria: é um OS rodando em uma empresa real, com resultados reportados de escala.</p></div>
+      <div class="layer"><div class="n">B</div><h4>Foco em contexto</h4><p>O G4 repete a ideia de que "contexto é rei" — o diferencial está no que o sistema sabe e conecta.</p></div>
+      <div class="layer"><div class="n">C</div><h4>Integração real</h4><p>Conecta sistemas de negócio (CRM, ERP, Databricks, Slack) — não só um chat.</p></div>
+      <div class="layer"><div class="n">D</div><h4>Linguagem acessível</h4><p>O conteúdo é em português e voltado a quem não é necessariamente dev.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Onde consumir</span>Fontes do G4 OS</h2>
+    <ul class="links">
+      <li>
+        <a href="https://open.spotify.com/playlist/0QUiQS8rmrE89OeQLvssjO" target="_blank" rel="noopener">Podcast "O Jogo da IA" (G4) — Spotify</a>
+        <div class="desc">O programa do Tallis Gomes e do João Vitor Chaves. Fonte direta da tese de "contexto é rei" e do uso real de IA nas empresas deles. Comece pelos episódios mais recentes.</div>
+      </li>
+      <li>
+        <a href="https://podcasts.apple.com/ch/podcast/como-g4-est%C3%A1-escalando-ainda-mais-usando-intelig%C3%AAncia/id1525781152?i=1000756380188" target="_blank" rel="noopener">Ep. "Como o G4 está escalando usando IA" — Apple Podcasts</a>
+        <div class="desc">Episódio de entrada para entender a aplicação prática do OS dentro do G4.</div>
+      </li>
+      <li>
+        <a href="https://pt.linkedin.com/posts/tallisgomes_eu-falo-com-uma-ia-e-ela-distribui-tarefas-activity-7436787894305939458-XpmV" target="_blank" rel="noopener">Post do Tallis no LinkedIn explicando o G4 OS</a>
+        <div class="desc">Ele descreve literalmente: "falo com uma IA e ela distribui tarefas pro time no Slack… conecta ao CRM, ERP, planilhas. Enxerga a empresa." É a definição prática do que queremos construir.</div>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/tallisgomes87/videos/g4-os-implemente-em-1-clique/1573317461039059/" target="_blank" rel="noopener">Vídeo "G4 OS | Implemente em 1 clique" (Facebook)</a>
+        <div class="desc">Mostra as capacidades vendidas: lê/responde e-mail, puxa dados do negócio em tempo real, monitora mudanças e executa tarefas.</div>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=670zVqYbD9s" target="_blank" rel="noopener">"The competitive advantage that matters in the AI era" (YouTube, Tallis Gomes)</a>
+        <div class="desc">Fala de 1h13 com a tese por trás do OS — bom para entender o posicionamento estratégico.</div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="tag">Mapeamento</span>Do G4 OS para o nosso AI OS</h2>
+    <p class="muted">Como traduzir as capacidades descritas pelo G4 para os componentes da nossa arquitetura (ver <a href="index.html">Início</a>).</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="body"><h4>"Falo com uma IA" → Camada de entrada + Agente</h4><p>A interface de linguagem natural que recebe a intenção e a encaminha para o sistema.</p></div></div>
+      <div class="step"><div class="num">2</div><div class="body"><h4>"Distribui tarefas pro time" → Orquestração</h4><p>O OS decide o que fazer e despacha ações — no nosso caso, para agentes ou ferramentas, não pessoas.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="body"><h4>"Conecta CRM, ERP, planilhas" → Conexões</h4><p>Integrações externas que dão dados reais ao sistema (ver etapa 6 do passo a passo).</p></div></div>
+      <div class="step"><div class="num">4</div><div class="body"><h4>"Enxerga a empresa" → Memória de longo prazo</h4><p>Contexto persistente sobre o negócio, que sobrevive entre sessões e alimenta decisões.</p></div></div>
+      <div class="step"><div class="num">5</div><div class="body"><h4>"Em 1 clique" → Saída executável</h4><p>O resultado não é só uma resposta: é uma tarefa executada de ponta a ponta.</p></div></div>
+    </div>
+    <div class="callout">
+      <strong>Insight.</strong> O G4 OS é a prova de que um AI OS não precisa ser um produto gigante para ser útil — ele é um conjunto de conexões + memória + orquestração em torno de um modelo. Esse é o tamanho que miramos no início.
+    </div>
+  </section>
+
+  <p><a class="back" href="index.html">← Voltar ao início</a></p>
+
+</main>
+
+<footer>
+  Repositório <strong>estudo-ai-os</strong> · documentação e base de estudo · material curado e gratuito · atualizado em 13/08/2026
+</footer>
+</body>
+</html>

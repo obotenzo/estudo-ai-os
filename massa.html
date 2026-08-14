@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mão na massa — Estudo de AI OS</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="row">
+    <span class="brand">🧠 Estudo de AI OS</span>
+    <span class="links">
+      <a href="index.html">Início</a>
+      <a href="g4.html">G4 OS</a>
+      <a href="conceito.html">Conceito</a>
+      <a href="massa.html" class="active">Mão na massa</a>
+      <a href="vibe.html">Vibe coding</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Mão na massa</h1>
+    <p>As fundações técnicas para construir seu AI OS com memória persistente: Letta, A-MEM e AIOS — todos open source.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2><span class="tag">Fundação</span>Escolhendo a base de memória</h2>
+    <div class="lead">
+      <p>Um AI OS precisa de uma camada de memória que <strong>sobreviva entre sessões</strong> e se mantenha organizada. Três projetos open source cobrem isso hoje, cada um com um ângulo diferente. Role para baixo para decidir por onde começar.</p>
+    </div>
+
+    <div class="grid">
+      <div class="layer"><div class="n">L</div><h4>Letta (MemGPT)</h4><p>Agentes <strong>stateful</strong> que lembram tudo. Abstrai a complexidade da memória para você focar em lógica.</p></div>
+      <div class="layer"><div class="n">A</div><h4>A-MEM</h4><p>Memória que <strong>evolui sozinha</strong> (método Zettelkasten). Conecta aprendizados automaticamente.</p></div>
+      <div class="layer"><div class="n">O</div><h4>AIOS</h4><p><strong>LLM como SO</strong>: gerencia agents como processos, com scheduler, memória e contexto.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Framework 1</span>Letta — agentes com memória stateful</h2>
+    <ul class="links">
+      <li><a href="https://www.letta.com/" target="_blank" rel="noopener">Letta — site oficial</a><div class="desc">"Machines that learn." Cria agentes stateful que lembram tudo, aprendem continuamente e melhoram com o tempo.</div></li>
+      <li><a href="https://github.com/letta-ai/letta" target="_blank" rel="noopener">Letta — repositório GitHub</a><div class="desc">Código aberto (antigo MemGPT), centenas de contribuidores. Implementa o design de memória de longo prazo em LLMs.</div></li>
+    </ul>
+    <h3>Como encaixa na arquitetura</h3>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="body"><h4>Memória hierárquica</h4><p>Letta separa memória de longo prazo (arquivada) da de trabalho (contexto ativo) — exatamente as camadas 2 e 3 do nosso diagrama.</p></div></div>
+      <div class="step"><div class="num">2</div><div class="body"><h4>Self-editing memory</h4><p>O agente decide o que memorizar e o que descartar, reduzindo contexto obsoleto.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="body"><h4>Ponto de partida</h4><p>É o caminho mais direto para ter um agente com memória rodando localmente — etapa 5 do passo a passo.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Framework 2</span>A-MEM — memória que evolui sozinha</h2>
+    <ul class="links">
+      <li><a href="https://arxiv.org/abs/2502.12110" target="_blank" rel="noopener">A-MEM — paper (arXiv:2502.12110)</a><div class="desc">Sistema de memória agentica que organiza memórias dinamicamente. Baseado no método Zettelkasten de notas conectadas.</div></li>
+      <li><a href="https://github.com/agiresearch/a-mem" target="_blank" rel="noopener">A-MEM — repositório GitHub</a><div class="desc">Código aberto do paper. Boa referência para quem quer implementar "insights acumulativos" (camada 4).</div></li>
+    </ul>
+    <h3>Por que importa para o nosso OS</h3>
+    <p>O A-MEM é a materialização técnica do conceito de <strong>insights acumulativos</strong>: em vez de apenas empilhar fatos, ele cria uma <strong>rede de conhecimento</strong> onde novas memórias se conectam às antigas. É o que faz o sistema "ficar mais esperto" com o uso — alinhado à tese do G4 de contexto que cresce.</p>
+  </section>
+
+  <section>
+    <h2><span class="tag">Framework 3</span>AIOS — LLM como sistema operacional</h2>
+    <ul class="links">
+      <li><a href="https://github.com/agiresearch/AIOS" target="_blank" rel="noopener">AIOS — repositório GitHub</a><div class="desc">Implementação real de "LLM como SO": gerencia agents como processos, com scheduler, memória e contexto. Veja código de um OS de IA funcionando.</div></li>
+    </ul>
+    <h3>O que ele representa</h3>
+    <p>Se o Letta é sobre memória e o A-MEM sobre organização, o AIOS é sobre <strong>orquestração em nível de SO</strong>: como múltiplos agents convivem, recebem recursos e são escalonados. É a referência mais próxima de um "sistema operacional" de verdade para IA.</p>
+  </section>
+
+  <section>
+    <h2><span class="tag">Tutorial</span>Vídeos práticos de construção</h2>
+    <ul class="links">
+      <li>
+        <a href="https://www.youtube.com/watch?v=rZX1OYetbSM" target="_blank" rel="noopener">"How to Build Your Own AI Operating System" (vídeo)</a>
+        <div class="desc">Quebra a arquitetura em 3 camadas (webhook triggers, scheduled workflows, agent layer) com FastAPI/Celery/Redis/Docker. Mão na massa pesada.</div>
+        <div class="meta"><span class="pill">vídeo</span></div>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=2s_olItq3P4" target="_blank" rel="noopener">"I Built an AI Agent Operating System in 90 Days" (vídeo)</a>
+        <div class="desc">Relato prático com "company context layer" dando memória aos agents — espelha a ideia do G4 OS.</div>
+        <div class="meta"><span class="pill">vídeo</span></div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="tag">Próximo</span>Roteiro de implementação</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="body"><h4>Subir o Letta localmente</h4><p>Criar um agente e validar que ele lembra entre sessões (etapa 5 do passo a passo).</p></div></div>
+      <div class="step"><div class="num">2</div><div class="body"><h4>Estudar o A-MEM</h4><p>Avaliar se a memória "que evolui" faz sentido como camada 4 do nosso OS.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="body"><h4>Usar o AIOS como referência</h4><p>Para a orquestração multi-agente quando o sistema crescer.</p></div></div>
+      <div class="step"><div class="num">4</div><div class="body"><h4>Construir com vibe coding</h4><p>Escrever o código de integração usando as ferramentas da próxima seção. <a href="vibe.html">→ Vibe coding</a></p></div></div>
+    </div>
+  </section>
+
+  <p><a class="back" href="index.html">← Voltar ao início</a></p>
+
+</main>
+
+<footer>
+  Repositório <strong>estudo-ai-os</strong> · documentação e base de estudo · material curado e gratuito · atualizado em 13/08/2026
+</footer>
+</body>
+</html>
