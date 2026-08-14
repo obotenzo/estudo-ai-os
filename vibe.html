@@ -17,7 +17,6 @@
       <a href="conceito.html">Conceito</a>
       <a href="massa.html">Mão na massa</a>
       <a href="vibe.html" class="active">Vibe coding</a>
-      <a href="resumos.html">Resumos</a>
     </span>
   </div>
 </nav>
@@ -46,11 +45,31 @@
         <a href="https://www.xda-developers.com/tested-claude-code-lovable-and-replit-side-by-side/" target="_blank" rel="noopener">Comparativo Claude Code vs Codex vs Lovable vs Replit (XDA)</a>
         <div class="desc">Lado a lado, para decidir com o que codar seu OS. Claude Code e Codex são terminais locais voltados a dev; Lovable e Replit brilham em UI rápida.</div>
         <div class="meta"><span class="pill">artigo</span></div>
+        <div class="resumo">
+          <div class="src">Resumo do conteúdo (XDA + complemento justinmckelvey.com, 2026)</div>
+          <ul>
+            <li><strong>Claude Code</strong> (terminal): melhor disciplina de "ficar no escopo" — edita só o que pediu. Ótimo para refatoração e revisão. Modelo padrão Claude Sonnet 4.6.</li>
+            <li><strong>Codex</strong> (terminal, OpenAI): mais autônomo/agressivo — termina trabalho em massa (renomear em 47 arquivos, migrações) mas gera diffs grandes.</li>
+            <li><strong>Lovable</strong> (browser): mais polido para não-devs (React+Tailwind+Supabase, hosting incluso). Stack opinativo, difícil de mudar.</li>
+            <li><strong>Replit</strong> (browser): Linux real na nuvem com armazenamento persistente — bom para colaboração e protótipos.</li>
+            <li>Modelo importa mais que interface: "escolha o cérebro, depois a carcaça".</li>
+          </ul>
+          <div class="ins"><b>Insight:</b> pra nosso OS, Claude Code/Codex para lógica + Lovable para a UI — e os dois sincronizam via GitHub.</div>
+        </div>
       </li>
       <li>
         <a href="https://www.reddit.com/r/ClaudeAI/comments/1o6kspo/build_lovable_for_claude_code_users_no_costs/" target="_blank" rel="noopener">Reddit — fluxo usando Claude Code/Codex/Lovable juntos via GitHub</a>
         <div class="desc">Como misturar as ferramentas sincronizando via GitHub: uma gera a estrutura, outra refina o código, tudo versionado.</div>
         <div class="meta"><span class="pill">thread</span></div>
+        <div class="resumo">
+          <div class="src">Resumo do conteúdo (thread r/ClaudeAI)</div>
+          <ul>
+            <li>Usuários combinam Lovable (gera a estrutura/app) com Claude Code (lógica, integrações, Stripe, etc.).</li>
+            <li>Uso de GitHub sync para manter tudo versionado e evitar divergência entre ferramentas.</li>
+            <li>Claude Code "one-shots" projetos que custariam caro no Lovable; Lovable faz a parte visual.</li>
+          </ul>
+          <div class="ins"><b>Insight:</b> o fluxo "Lovable cria, Claude Code conecta" é exatamente o nosso modo de construir com vibe coding.</div>
+        </div>
       </li>
     </ul>
     <div class="grid">

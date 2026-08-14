@@ -17,7 +17,6 @@
       <a href="conceito.html" class="active">Conceito</a>
       <a href="massa.html">Mão na massa</a>
       <a href="vibe.html">Vibe coding</a>
-      <a href="resumos.html">Resumos</a>
     </span>
   </div>
 </nav>
@@ -99,21 +98,61 @@
         <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — "Effective context engineering for AI agents"</a>
         <div class="desc">Texto obrigatório. Manual prático de como montar a camada de contexto: recuperação, note-taking e memória persistente.</div>
         <div class="meta"><span class="pill">EN</span>artigo técnico</div>
+        <div class="resumo">
+          <div class="src">Resumo do conteúdo</div>
+          <ul>
+            <li>Context engineering é a evolução do prompt engineering: não é "as palavras certas", é "qual configuração de contexto gera o comportamento desejado".</li>
+            <li>O agente em loop gera cada vez mais dados — o contexto tem de ser refinado ciclicamente.</li>
+            <li>Estratégias: context retrieval + agentic search (busca sob demanda) e structured note-taking (o agente anota em memória externa).</li>
+            <li>Para tarefas longas: mantém só o estado atual e descarrega o histórico em notas.</li>
+          </ul>
+          <div class="ins"><b>Insight:</b> "não faça do prompt o sistema de memória" — guarde fora do modelo e injete só o necessário.</div>
+        </div>
       </li>
       <li>
         <a href="https://weaviate.io/blog/context-engineering" target="_blank" rel="noopener">Weaviate — "Context Engineering" (os 6 pilares)</a>
-        <div class="desc">Desenho completo combinando janela de contexto com memória de longo prazo e seleção por passo.</div>
+        <div class="desc">Desenho completo combinando janela de contexto com memória de longo prazo e seleção do que entra a cada passo.</div>
         <div class="meta"><span class="pill">EN</span>artigo</div>
+        <div class="resumo">
+          <div class="src">Resumo do conteúdo</div>
+          <ul>
+            <li>A janela de contexto é um recurso escasso (como um whiteboard que enche e apaga o velho).</li>
+            <li>Diferença entre demo bonito e sistema de produção é <strong>como</strong> a informação é selecionada/entregue a cada passo.</li>
+            <li>6 pilares: Memory, Selection, Compression, Contextual retrieval, Multi-step reasoning, State management.</li>
+            <li>Combina janela de contexto com memória de longo prazo (vector store) e decidir o que entra.</li>
+          </ul>
+          <div class="ins"><b>Insight:</b> trate a janela como orçamento de atenção — gaste só em tokens de alto sinal.</div>
+        </div>
       </li>
       <li>
         <a href="https://www.mindstudio.ai/blog/how-to-build-agentic-operating-system-9-components" target="_blank" rel="noopener">MindStudio — "9 Components of an Agentic OS"</a>
         <div class="desc">O mapa de arquitetura usado como checklist nesta página.</div>
         <div class="meta"><span class="pill">EN</span>artigo</div>
+        <div class="resumo">
+          <div class="src">Resumo do conteúdo</div>
+          <ul>
+            <li>Um agentic OS é um padrão de componentes, não um produto.</li>
+            <li>Os 9: identity file, short-term memory, long-term memory, skills, planning layer, orchestration, handoff protocols, evaluation, guardrails.</li>
+            <li>Cada agente tem memória curta (contexto ativo) + longa (compartilhada em vector store) e busca semântica.</li>
+          </ul>
+          <div class="ins"><b>Insight:</b> use os 9 como checklist do projeto — é o esqueleto da nossa arquitetura.</div>
+        </div>
       </li>
       <li>
         <a href="https://www.augmentcode.com/guides/agent-memory-vs-context-engineering" target="_blank" rel="noopener">Augment Code — "Agent Memory vs. Context Engineering"</a>
         <div class="desc">Esclarece as 3 camadas de persistência e a diferença entre memória e engenharia de contexto.</div>
         <div class="meta"><span class="pill">EN</span>guia</div>
+        <div class="resumo">
+          <div class="src">Resumo do conteúdo</div>
+          <ul>
+            <li>Memória = armazenamento externo que sobrevive à sessão (arquivos, DB, vector store).</li>
+            <li>Context engineering = selecionar/comprimir/injetar o que entra na janela finita.</li>
+            <li>3 camadas de persistência: context files (AGENTS.md, regras), agent memory (decisões com curadoria humana), living specs (intenção que evolui).</li>
+            <li>Memória sem context engineering vira "acúmulo"; context engineering sem memória vira amnésia.</li>
+            <li>Mitigação: revisar memórias no fim da sessão (aprovar/editar/descartar).</li>
+          </ul>
+          <div class="ins"><b>Insight:</b> a curadoria humana das memórias é o que evita contexto obsoleto contaminando o agente.</div>
+        </div>
       </li>
     </ul>
   </section>
