@@ -44,120 +44,75 @@
   </section>
 
   <section>
-    <h2><span class="tag">Framework 1</span>Letta — agentes com memória stateful</h2>
+    <h2><span class="tag">Resumos</span>Letta, A-MEM, AIOS e vídeos</h2>
+
     <ul class="links">
-      <li><a href="https://www.letta.com/" target="_blank" rel="noopener">Letta — site oficial</a><div class="desc">"Machines that learn." Cria agentes stateful que lembram tudo, aprendem continuamente e melhoram com o tempo.</div>
+      <li>
+        <a href="https://www.letta.com/" target="_blank" rel="noopener">Letta — site oficial</a>
+        <div class="desc">"Machines that learn." Cria agentes stateful que lembram tudo, aprendem continuamente e melhoram com o tempo.</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Criado pelos autores do MemGPT (UC Berkeley Sky Computing Lab).</li>
-            <li>Agentes que lembram tudo, aprendem continuamente e melhoram com o tempo.</li>
-            <li>Conceitos-chave do blog: Memory Models (RL com memória), Context Constitution, Context Repositories (memória versionada via git), Sleep-time Compute (raciocina em idle, não na inferência), Continual Learning em token space.</li>
-            <li>Produto: Letta Agent — memória, identidade e capacidades evoluem com a experiência.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (site + blog de pesquisa)</div>
+          <p>A Letta é um laboratório de IA de San Francisco, fundado pelos criadores do MemGPT (oriundos do Sky Computing Lab da UC Berkeley, o mesmo berço do Spark e do Ray). A proposta é "máquinas que aprendem" — agentes experienciais que lembram tudo, aprendem continuamente e melhoram a si mesmos com o tempo. O blog de pesquisa revela os conceitos que sustentam esse modelo: Memory Models (treinados com RL nativo de memória), Context Constitution (princípios que governam como o agente gerencia contexto para aprender com a experiência), Context Repositories (memória versionada via git), Sleep-time Compute (o agente raciocina sobre o contexto enquanto está ocioso, não durante a inferência) e Continual Learning em token space (aprender no espaço de tokens é a chave para agentes que realmente evoluem). O produto concreto é o Letta Agent, cuja memória, identidade e capacidades evoluem com a experiência — e é exatamente esse comportamento de "organizar a própria memória enquanto ocioso" que se aplica à nossa camada 4.</p>
           <div class="ins"><b>Insight:</b> a ideia de "sleep-time compute" é o agente organizar a própria memória enquanto ocioso — aplicável à nossa camada 4.</div>
         </div>
       </li>
-      <li><a href="https://github.com/letta-ai/letta" target="_blank" rel="noopener">Letta — repositório GitHub</a><div class="desc">Código aberto (antigo MemGPT), centenas de contribuidores. Implementa o design de memória de longo prazo em LLMs.</div>
+
+      <li>
+        <a href="https://github.com/letta-ai/letta" target="_blank" rel="noopener">Letta — repositório GitHub</a>
+        <div class="desc">Código aberto (antigo MemGPT), centenas de contribuidores. Implementa o design de memória de longo prazo em LLMs.</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Implementa o design de memória de longo prazo (MemGPT) em LLMs.</li>
-            <li>Código aberto, centenas de contribuidores; roda localmente.</li>
-            <li>Base para subir um agente stateful com memória persistente.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (repositório)</div>
+          <p>O repositório da Letta (antigo MemGPT) é o código aberto por trás do sistema, com centenas de contribuidores e implementação do design de memória de longo prazo para LLMs. Roda localmente e abstrai a complexidade de gerenciar memória — separando memória arquivada (longo prazo) da memória de trabalho (contexto ativo), exatamente as camadas 2 e 3 do nosso diagrama. Por ser open source e bem mantido, é o caminho mais direto para subir um agente stateful com memória persistente (etapa 5 do nosso passo a passo) sem ter que construir a camada de memória do zero.</p>
           <div class="ins"><b>Insight:</b> é o caminho mais direto (etapa 5) para ter um agente com memória rodando.</div>
         </div>
       </li>
-    </ul>
-    <h3>Como encaixa na arquitetura</h3>
-    <div class="steps">
-      <div class="step"><div class="num">1</div><div class="body"><h4>Memória hierárquica</h4><p>Letta separa memória de longo prazo (arquivada) da de trabalho (contexto ativo) — exatamente as camadas 2 e 3 do nosso diagrama.</p></div></div>
-      <div class="step"><div class="num">2</div><div class="body"><h4>Self-editing memory</h4><p>O agente decide o que memorizar e o que descartar, reduzindo contexto obsoleto.</p></div></div>
-      <div class="step"><div class="num">3</div><div class="body"><h4>Ponto de partida</h4><p>É o caminho mais direto para ter um agente com memória rodando localmente — etapa 5 do passo a passo.</p></div></div>
-    </div>
-  </section>
 
-  <section>
-    <h2><span class="tag">Framework 2</span>A-MEM — memória que evolui sozinha</h2>
-    <ul class="links">
-      <li><a href="https://arxiv.org/abs/2502.12110" target="_blank" rel="noopener">A-MEM — paper (arXiv:2502.12110)</a><div class="desc">Sistema de memória agentica que organiza memórias dinamicamente. Baseado no método Zettelkasten de notas conectadas.</div>
+      <li>
+        <a href="https://arxiv.org/abs/2502.12110" target="_blank" rel="noopener">A-MEM — paper (arXiv:2502.12110)</a>
+        <div class="desc">Sistema de memória agentica que organiza memórias dinamicamente. Baseado no método Zettelkasten de notas conectadas.</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo (NeurIPS 2025)</div>
-          <ul>
-            <li>Sistema de memória que se organiza sozinho, seguindo o método Zettelkasten.</li>
-            <li>Ao adicionar memória: gera nota com contexto, keywords e tags; procura memórias históricas relacionadas e cria links.</li>
-            <li>Memória "evolui": novas memórias podem atualizar representações das antigas.</li>
-            <li>Rede de conhecimento interconectada, adaptável e consciente de contexto.</li>
-            <li>Supera baselines SOTA em 6 modelos de base.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (paper, NeurIPS 2025)</div>
+          <p>O A-MEM (Agentic Memory for LLM Agents) é um sistema de memória que se organiza autonomamente, seguindo os princípios do método Zettelkasten — a técnica de notas interconectadas usada por pesquisadores para construir redes de conhecimento. Quando uma nova memória é adicionada, o sistema gera uma nota com múltiplos atributos estruturados (descrição de contexto, keywords e tags) e, em seguida, analisa as memórias históricas para identificar conexões relevantes, criando links onde há similaridade. O ponto mais interessante é a "evolução" da memória: conforme novas memórias são integradas, elas podem disparar atualizações nas representações e atributos das memórias antigas, permitindo que a rede refinie continuamente sua compreensão. Nos experimentos, o método superou baselines de estado da arte em seis modelos de base. É a materialização técnica dos nossos "insights acumulativos" (camada 4): uma memória que não apenas empilha fatos, mas os conecta e melhora com o uso.</p>
           <div class="ins"><b>Insight:</b> é a materialização técnica dos "insights acumulativos" (camada 4) — aprendizado que se conecta.</div>
         </div>
       </li>
-      <li><a href="https://github.com/agiresearch/a-mem" target="_blank" rel="noopener">A-MEM — repositório GitHub</a><div class="desc">Código aberto do paper. Boa referência para quem quer implementar "insights acumulativos" (camada 4).</div>
+
+      <li>
+        <a href="https://github.com/agiresearch/a-mem" target="_blank" rel="noopener">A-MEM — repositório GitHub</a>
+        <div class="desc">Código aberto do paper. Boa referência para quem quer implementar "insights acumulativos" (camada 4).</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Código aberto do paper A-MEM (agiresearch/A-mem).</li>
-            <li>Permite implementar a memória que evolui e se conecta sozinha.</li>
-            <li>Boa referência para a camada 4 (insights acumulativos) do nosso OS.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (repositório)</div>
+          <p>O repositório agiresearch/A-mem contém o código aberto do paper A-MEM, permitindo implementar na prática a memória que evolui e se conecta sozinha. É a referência concreta para quem quer construir a camada 4 do nosso OS (insights acumulativos) sem reinventar a técnica do zero. Estudar este código ajuda a entender como estruturar notas com atributos, como buscar conexões semânticas e como propagar atualizações entre memórias — o comportamento que faz o sistema "ficar mais esperto" conforme é usado, alinhado à tese do G4 de um contexto que cresce.</p>
           <div class="ins"><b>Insight:</b> estudar este repo ajuda a construir a memória que "fica mais esperta" com o uso.</div>
         </div>
       </li>
-    </ul>
-    <h3>Por que importa para o nosso OS</h3>
-    <p>O A-MEM é a materialização técnica do conceito de <strong>insights acumulativos</strong>: em vez de apenas empilhar fatos, ele cria uma <strong>rede de conhecimento</strong> onde novas memórias se conectam às antigas. É o que faz o sistema "ficar mais esperto" com o uso — alinhado à tese do G4 de contexto que cresce.</p>
-  </section>
 
-  <section>
-    <h2><span class="tag">Framework 3</span>AIOS — LLM como sistema operacional</h2>
-    <ul class="links">
-      <li><a href="https://github.com/agiresearch/AIOS" target="_blank" rel="noopener">AIOS — repositório GitHub</a><div class="desc">Implementação real de "LLM como SO": gerencia agents como processos, com scheduler, memória e contexto. Veja código de um OS de IA funcionando.</div>
+      <li>
+        <a href="https://github.com/agiresearch/AIOS" target="_blank" rel="noopener">AIOS — repositório GitHub</a>
+        <div class="desc">Implementação real de "LLM como SO": gerencia agents como processos, com scheduler, memória e contexto. Veja código de um OS de IA funcionando.</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo (GitHub · 6.2k stars · 859 commits)</div>
-          <ul>
-            <li>"LLM as OS, Agents as Apps" — trata agents como processos gerenciados pelo SO.</li>
-            <li>Tem scheduler, gerenciamento de memória e contexto para múltiplos agents.</li>
-            <li>Inclui aios-rs (versão Rust) e documentação em docs.aios.foundation.</li>
-            <li>Papers de base: A-Mem, LiteCUA (computer-use), semantic file system, Cerebrum SDK.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (repositório, 6.2k stars, 859 commits)</div>
+          <p>O AIOS (AI Agent Operating System) parte do conceito "LLM as OS, Agents as Apps" — trata os agentes como processos gerenciados por um sistema operacional, com um scheduler, gerenciamento de memória e controle de contexto para múltiplos agents rodando ao mesmo tempo. O repositório (com quase 6,2 mil estrelas e centenas de commits) inclui até uma versão em Rust (aios-rs) e documentação em docs.aios.foundation, além de papers de base como A-Mem, LiteCUA (computer-use) e um semantic file system. É a referência mais próxima de um "SO de verdade" para IA que existe em código aberto, e serve como modelo de orquestração em nível de sistema quando o nosso projeto crescer além de um único agente.</p>
           <div class="ins"><b>Insight:</b> referência mais próxima de um "SO de verdade" para IA — use como modelo de orquestração quando crescer.</div>
         </div>
       </li>
-    </ul>
-    <h3>O que ele representa</h3>
-    <p>Se o Letta é sobre memória e o A-MEM sobre organização, o AIOS é sobre <strong>orquestração em nível de SO</strong>: como múltiplos agents convivem, recebem recursos e são escalonados. É a referência mais próxima de um "sistema operacional" de verdade para IA.</p>
-  </section>
 
-  <section>
-    <h2><span class="tag">Tutorial</span>Vídeos práticos de construção</h2>
-    <ul class="links">
       <li>
         <a href="https://www.youtube.com/watch?v=rZX1OYetbSM" target="_blank" rel="noopener">"How to Build Your Own AI Operating System" (vídeo)</a>
         <div class="desc">Quebra a arquitetura em 3 camadas (webhook triggers, scheduled workflows, agent layer) com FastAPI/Celery/Redis/Docker. Mão na massa pesada.</div>
-        <div class="meta"><span class="pill">vídeo</span></div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Quebra a arquitetura em 3 camadas: webhook triggers, scheduled workflows, agent layer.</li>
-            <li>Stack: Python/FastAPI (backend), Celery (filas), Redis (estado), Docker (deploy).</li>
-            <li>Foco em como disparar, agendar e orquestrar agents de forma confiável.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (vídeo, arquitetura full-stack)</div>
+          <p>Neste vídeo, o autor detalha a arquitetura de um AI OS próprio dividida em três camadas: webhook triggers (gatilhos externos que disparam o sistema), scheduled workflows (fluxos agendados que rodam no tempo certo) e o agent layer (onde os agentes de IA efetivamente raciocinam e agem). A stack usada é Python com FastAPI no backend, Celery para filas de tarefas, Redis para estado e Docker para deploy. O foco está em Como disparar, agendar e orquestrar agents de forma confiável, em vez de apenas "fazer um chatbot". Para o nosso projeto, a separação entre trigger / scheduler / agent é um bom ponto de partida prático para o backend: permite que o OS reaja a eventos e também execute tarefas recorrentes de forma previsível.</p>
           <div class="ins"><b>Insight:</b> a separação trigger / scheduler / agent é um bom ponto de partida prático para nosso backend.</div>
         </div>
       </li>
+
       <li>
         <a href="https://www.youtube.com/watch?v=2s_olItq3P4" target="_blank" rel="noopener">"I Built an AI Agent Operating System in 90 Days" (vídeo)</a>
         <div class="desc">Relato prático com "company context layer" dando memória aos agents — espelha a ideia do G4 OS.</div>
-        <div class="meta"><span class="pill">vídeo</span></div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Apresenta uma "company context layer" que dá a cada agente "memória".</li>
-            <li>Mostra como construir uma camada de memória/contexto para a organização.</li>
-            <li>Aborda o que funciona (e o que não) ao escalar agents num prazo real.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (vídeo, relato prático)</div>
+          <p>O vídeo relata, em tom de bastidores, como o autor construiu um sistema operacional de agentes de IA em 90 dias, com destaque para uma "company context layer" (camada de contexto da empresa) que dá a cada agente uma espécie de memória compartilhada. A ideia é que todos os agents enxerguem o mesmo contexto organizacional — decisões, estado de projetos e conhecimento acumulado — em vez de cada um operar isolado. O autor também aborda o que funcionou e o que não funcionou ao escalar agents num prazo real, o que é valioso como "lição de campo". Essa camada de contexto espelha diretamente o G4 OS: a memória compartilhada é o que dá coerência ao sistema como um todo, fazendo com que os agents atuem como uma operação única e não como caixas isoladas.</p>
           <div class="ins"><b>Insight:</b> a "context layer" dele espelha o G4 OS — memória compartilhada é o que dá coerência ao sistema.</div>
         </div>
       </li>

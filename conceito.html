@@ -83,7 +83,7 @@
     <h2><span class="tag">Persistência</span>Memória vs. Context engineering (Augment)</h2>
     <p>Dois conceitos que confundem no início — e a diferença importa na arquitetura:</p>
     <div class="grid">
-      <div class="layer"><div class="n">M</div><h4>Agent memory</h4><p>Armazenamento <strong>externo</strong> que sobrevive ao fim da sessão: arquivos, bancos, base vetorial. Persiste por dias, semanas, meses.</p></div>
+      <div class="layer"><div class="n">M</div><h4>Agent memory</h4><p>Armazenamento <strong>externo</strong> que sobrevive ao fim da sessão: arquivos, bancos, base vetorial.</p></div>
       <div class="layer"><div class="n">C</div><h4>Context engineering</h4><p>A disciplina de <strong>selecionar e injetar</strong> essa memória na janela finita do modelo, turno a turno.</p></div>
     </div>
     <div class="callout">
@@ -92,65 +92,45 @@
   </section>
 
   <section>
-    <h2><span class="tag">Leitura</span>Fontes de conceito</h2>
+    <h2><span class="tag">Leitura</span>Fontes de conceito — resumos</h2>
+
     <ul class="links">
       <li>
         <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — "Effective context engineering for AI agents"</a>
         <div class="desc">Texto obrigatório. Manual prático de como montar a camada de contexto: recuperação, note-taking e memória persistente.</div>
-        <div class="meta"><span class="pill">EN</span>artigo técnico</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Context engineering é a evolução do prompt engineering: não é "as palavras certas", é "qual configuração de contexto gera o comportamento desejado".</li>
-            <li>O agente em loop gera cada vez mais dados — o contexto tem de ser refinado ciclicamente.</li>
-            <li>Estratégias: context retrieval + agentic search (busca sob demanda) e structured note-taking (o agente anota em memória externa).</li>
-            <li>Para tarefas longas: mantém só o estado atual e descarrega o histórico em notas.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (artigo, 29/set/2025)</div>
+          <p>O texto da Anthropic trata o context engineering como a evolução natural do prompt engineering: não se trata mais de encontrar "as palavras certas" para o prompt, e sim de responder a uma pergunta mais ampla — qual configuração de contexto tem maior probabilidade de gerar o comportamento desejado no modelo. O contexto é definido como o conjunto de tokens disponíveis durante a inferência, e o problema de engenharia é otimizar a utilidade desses tokens diante das limitações inerentes do LLM. Como um agente rodando em loop gera continuamente novos dados que poderiam ser relevantes, esse universo precisa ser refinado ciclicamente a cada turno. As estratégias práticas apresentadas incluem context retrieval com agentic search (buscar informação sob demanda em vez de carregar tudo) e structured note-taking (o agente anota periodicamente em memória externa, conferindo persistência com overhead mínimo). Para tarefas de longa duração, a recomendação é manter apenas o estado atual e descarregar o histórico em notas, evitando estourar a janela.</p>
           <div class="ins"><b>Insight:</b> "não faça do prompt o sistema de memória" — guarde fora do modelo e injete só o necessário.</div>
         </div>
       </li>
+
       <li>
         <a href="https://weaviate.io/blog/context-engineering" target="_blank" rel="noopener">Weaviate — "Context Engineering" (os 6 pilares)</a>
         <div class="desc">Desenho completo combinando janela de contexto com memória de longo prazo e seleção do que entra a cada passo.</div>
-        <div class="meta"><span class="pill">EN</span>artigo</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>A janela de contexto é um recurso escasso (como um whiteboard que enche e apaga o velho).</li>
-            <li>Diferença entre demo bonito e sistema de produção é <strong>como</strong> a informação é selecionada/entregue a cada passo.</li>
-            <li>6 pilares: Memory, Selection, Compression, Contextual retrieval, Multi-step reasoning, State management.</li>
-            <li>Combina janela de contexto com memória de longo prazo (vector store) e decidir o que entra.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (artigo)</div>
+          <p>O post da Weaviate começa com uma observação que todo mundo que tenta construir um agente já viveu: demos mágicos de LLM funcionam até que a tarefa fica real e bagunçada, aí o modelo "esquece" o que foi dito dez mensagens atrás e passa a chutar respostas. O que parece esquecimento é, na verdade, uma limitação de memória — por padrão, um LLM só tem memória de curto prazo (a janela de contexto atual). Para construir agentes confiáveis, é preciso combinar essa janela com memória de longo prazo (recuperação de stores externas, como bases vetoriais) e decidir seletivamente o que incluir a cada passo. A metáfora central é a da janela como um quadro-branco: quando enche, o que é antigo precisa ser apagado para caber o novo. Por isso a diferença entre um demo bonito e um sistema de produção não está em "trocar por um modelo mais inteligente", e sim em como a informação é selecionada, estruturada e entregue ao modelo a cada passo. O artigo detalha seis pilares — Memory, Selection, Compression, Contextual retrieval, Multi-step reasoning e State management — e trata a janela de contexto como um recurso escasso que deve ser gasto apenas em tokens de alto sinal.</p>
           <div class="ins"><b>Insight:</b> trate a janela como orçamento de atenção — gaste só em tokens de alto sinal.</div>
         </div>
       </li>
+
       <li>
         <a href="https://www.mindstudio.ai/blog/how-to-build-agentic-operating-system-9-components" target="_blank" rel="noopener">MindStudio — "9 Components of an Agentic OS"</a>
         <div class="desc">O mapa de arquitetura usado como checklist nesta página.</div>
-        <div class="meta"><span class="pill">EN</span>artigo</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Um agentic OS é um padrão de componentes, não um produto.</li>
-            <li>Os 9: identity file, short-term memory, long-term memory, skills, planning layer, orchestration, handoff protocols, evaluation, guardrails.</li>
-            <li>Cada agente tem memória curta (contexto ativo) + longa (compartilhada em vector store) e busca semântica.</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (artigo)</div>
+          <p>O MindStudio parte de uma ideia importante: um agentic OS não é um produto pronto, é um padrão de componentes que você monta para que agentes raciocinem, ajam, lembrem e colaborem sem desmoronar quando a tarefa fica complexa. O texto lista os nove componentes fundamentais — identity file, short-term memory, long-term memory, skills, planning layer, orchestration, handoff protocols, evaluation e guardrails — e explica que cada agente combina memória curta (o contexto ativo da tarefa) com memória longa (compartilhada em uma base vetorial ou banco, acessível a todos os agentes) e usa busca semântica para recuperar o que precisa. A ideia central é que o "contexto é tudo": sem memória e sem estado persistente, um modelo não tem identidade nem continuidade. A lista funciona como um checklist arquitetural — se um desses nove componentes faltar, o sistema tende a quebrar em escala.</p>
           <div class="ins"><b>Insight:</b> use os 9 como checklist do projeto — é o esqueleto da nossa arquitetura.</div>
         </div>
       </li>
+
       <li>
         <a href="https://www.augmentcode.com/guides/agent-memory-vs-context-engineering" target="_blank" rel="noopener">Augment Code — "Agent Memory vs. Context Engineering"</a>
         <div class="desc">Esclarece as 3 camadas de persistência e a diferença entre memória e engenharia de contexto.</div>
-        <div class="meta"><span class="pill">EN</span>guia</div>
         <div class="resumo">
-          <div class="src">Resumo do conteúdo</div>
-          <ul>
-            <li>Memória = armazenamento externo que sobrevive à sessão (arquivos, DB, vector store).</li>
-            <li>Context engineering = selecionar/comprimir/injetar o que entra na janela finita.</li>
-            <li>3 camadas de persistência: context files (AGENTS.md, regras), agent memory (decisões com curadoria humana), living specs (intenção que evolui).</li>
-            <li>Memória sem context engineering vira "acúmulo"; context engineering sem memória vira amnésia.</li>
-            <li>Mitigação: revisar memórias no fim da sessão (aprovar/editar/descartar).</li>
-          </ul>
+          <div class="src">Resumo do conteúdo (guia)</div>
+          <p>O guia da Augment Code deixa clara a tratamento de uma confusão comum: a distinção entre agent memory e context engineering está no escopo da persistência. Agent memory é o armazenamento externo que sobrevive ao fim da sessão (arquivos, bancos, bases vetoriais); context engineering é a prática de selecionar, comprimir e injetar o que desse armazenamento entra na janela finita do modelo na sessão atual. Os dois resolvem problemas diferentes e são obrigatórios juntos — memória sem context engineering vira acúmulo de lixo, e context engineering sem memória vira amnésia. O texto detalha três camadas de persistência: context files (como AGENTS.md e regras, estáticos e versionados), agent memory (decisões aprendidas na sessão, com curadoria humana) e living specs (a intenção da feature que evolui sozinha). A parte mais prática é sobre a curadoria: memórias capturadas automaticamente sem revisão acumulam premissas obsoletas que contaminam o contexto futuro, então a mitigação é revisar as memórias no fim de cada sessão (aprovar, editar ou descartar).</p>
           <div class="ins"><b>Insight:</b> a curadoria humana das memórias é o que evita contexto obsoleto contaminando o agente.</div>
         </div>
       </li>
