@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desafios — Estudo de AI OS</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="row">
+    <span class="brand">🧠 Estudo de AI OS</span>
+    <span class="links">
+      <a href="index.html">Início</a>
+      <a href="g4.html">G4 OS</a>
+      <a href="conceito.html">Conceito</a>
+      <a href="massa.html">Mão na massa</a>
+      <a href="desafios.html" class="active">Desafios</a>
+      <a href="vibe.html">Vibe coding</a>
+      <a href="noticias.html">Notícias</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Desafios</h1>
+    <p>O que de fato derruba um AI OS em produção — e os conceitos técnicos que você precisa conhecer para não tropeçar nos mesmos erros.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2><span class="tag">Contexto</span>Por que isso importa</h2>
+    <div class="lead">
+      <p>A primeira verdade dura: <strong>88% dos projetos de agentes de IA não chegam à produção</strong>. E o motivo quase nunca é o modelo — é tudo ao redor dele: integração, qualidade de dados, segurança, orquestração e governança. Por isso os desafios se dividem em duas camadas: os <strong>arquiteturais</strong> (como você desenha) e os de <strong>operação</strong> (quando o sistema tem que rodar de verdade, todo dia, com dados reais).</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Matemática</span>1. Erro composto (o problema invisível)</h2>
+    <div class="resumo">
+      <div class="src">O que é</div>
+      <p>Se cada passo do seu agente acerta 85% (já é um bom desempenho), num fluxo de 10 passos a chance de dar tudo certo é 0,85 elevado a 10 = <strong>19,7%</strong>. Ou seja, 4 de cada 5 fluxos falham em algum ponto. Pesquisa de 2026 (APEX-Agents) confirma na prática: só 24% das tarefas de agente terminam de primeira. O erro se multiplica, não se anula.</p>
+      <div class="ins"><b>Como evitar:</b> coloque <em>validação intermediária</em> entre as ações. Sem "checkpoints" no meio do caminho, o erro se acumula silenciosamente até estourar no fim.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Memória</span>2. A janela de contexto estoura (context rot)</h2>
+    <div class="resumo">
+      <div class="src">O que é</div>
+      <p>Quanto mais o agente conversa e repassa tarefas, mais texto acumula na janela. Para não estourar, os desenvolvedores usam <em>summarization</em> (resumo do histórico) — mas o resumo corta as restrições e os casos de borda do prompt original. O agente final acaba recebendo instruções vagas e sem contexto. Esse fenômeno é o <strong>context rot</strong>: a qualidade do que o modelo "vê" cai com o tempo.</p>
+      <div class="ins"><b>Como evitar:</b> a memória tem que ficar <em>fora</em> do modelo (base vetorial, arquivos, nota-taking), não só dentro do prompt. É exatamente a regra de ouro da nossa página Conceito.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Orquestração</span>3. Multi-agente é onde tudo quebra</h2>
+    <div class="resumo">
+      <div class="src">O que é</div>
+      <p>Quando você liga vários agentes, os custos de coordenação crescem exponencialmente: 4 agentes geram 6 pontos de falha; 10 agentes, 45. Os modos de falha clássicos são: <strong>loop infinito</strong> (agentes se dizendo "obrigado" para sempre, sem saber quando parar); <strong>alucinação em cascata</strong> (um inventa um detalhe, o outro trata como verdade); <strong>perda de contexto no handoff</strong> (a resposta de um estoura a janela do outro); e <strong>objetivo perdido</strong> (cada agente otimiza só o próprio pedaço, e o objetivo do usuário some na passagem).</p>
+      <div class="ins"><b>Como evitar:</b> use <em>orchestration determinística</em> (não "emergente"), com protocolos de coordenação e gerenciamento de papéis claros. Multi-agente só vale quando as tarefas são paralelas e legíveis.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Dados</span>4. A camada de dados domina as falhas (55%)</h2>
+    <div class="resumo">
+      <div class="src">O que é</div>
+      <p>O maior tier de falha em produção não é o modelo nem a orquestração — é a <strong>camada de dados/contexto</strong>, responsável por cerca de 55% dos problemas. Aqui entram: <em>stale context</em> (contexto obsoleto), <em>schema drift</em> (o formato dos dados muda e o agente não percebe), seleção errada de tabela e ausência de semântica de negócio. Essas falhas são as piores porque são mal instrumentadas e mal entendidas.</p>
+      <div class="ins"><b>Como evitar:</b> sua memória e seus retrievers precisam de <em>curadoria e versionamento</em>. Memória sem revisão vira lixo que contamina o contexto futuro.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Segurança</span>5. Nova superfície de ataque</h2>
+    <div class="resumo">
+      <div class="src">O que é</div>
+      <p>Com agentes agindo em seu nome, aparecem modos de falha que não existiam antes: <em>prompt injection em cadeia</em> (um agente injeta instrução no outro), <em>goal hijacking</em> (redirecionam o objetivo final sem "hackear" o sistema), <em>session context contamination</em> (contexto envenenado acumulado na sessão) e <em>memory poisoning</em> (alguém contaminou a memória). O red team da Microsoft (2026) listou 7 modos novos — e o <strong>human-in-the-loop bypass</strong> foi o mais explorado.</p>
+      <div class="ins"><b>Como evitar:</b> <em>guardrails</em>, <em>sandbox/execution isolation</em> (tipo o MXC da Microsoft) e <em>human-in-the-loop</em> em ações críticas.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Organização</span>6. O desafio que ninguém vê</h2>
+    <div class="resumo">
+      <div class="src">O que é</div>
+      <p><em>Scope creep</em> (pedir mais do que a infra aguenta) somado a má qualidade de dados responde por 61% das falhas. Integrar com um ERP interno "sem API oficial" trava projetos por meses. Falta de governança e resistência interna matam o que funciona em demo. Quem faz avaliação de falhas antes de começar reduz a taxa de fracasso para menos de 15%.</p>
+      <div class="ins"><b>Como evitar:</b> <em>scoping discipline</em> e <em>integration validation</em> — comece pequeno, com sistemas modernos, antes de encostar no legado.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Glossário</span>Conceitos que você precisa conhecer</h2>
+    <div class="grid">
+      <div class="layer"><div class="n">1</div><h4>Context engineering</h4><p>Decidir quais tokens entram na janela a cada passo — não "dar mais contexto".</p></div>
+      <div class="layer"><div class="n">2</div><h4>Context rot</h4><p>A memória "apodrece" se fica só no prompt; por isso vive fora do modelo.</p></div>
+      <div class="layer"><div class="n">3</div><h4>State management</h4><p>O agente precisa de estado persistente entre passos e sessões.</p></div>
+      <div class="layer"><div class="n">4</div><h4>Orchestration</h4><p>Determinística (você decide a ordem) vs. emergente (os agentes decidem).</p></div>
+      <div class="layer"><div class="n">5</div><h4>Compounding error</h4><p>Erro que se multiplica passo a passo, não se anula.</p></div>
+      <div class="layer"><div class="n">6</div><h4>Schema drift</h4><p>O formato dos dados muda sem aviso e o agente não percebe.</p></div>
+      <div class="layer"><div class="n">7</div><h4>Stale context / poisoning</h4><p>Memória obsoleta ou envenenada por dados ruins.</p></div>
+      <div class="layer"><div class="n">8</div><h4>Prompt injection / hijacking</h4><p>Sequestro de comportamento via texto natural.</p></div>
+      <div class="layer"><div class="n">9</div><h4>Human-in-the-loop</h4><p>Humano valida antes de ações críticas.</p></div>
+      <div class="layer"><div class="n">10</div><h4>Sandbox / isolation</h4><p>O agente roda em gaiola, não solto no sistema.</p></div>
+      <div class="layer"><div class="n">11</div><h4>Evaluation</h4><p>Como medir se o agente acerta e onde ele erra.</p></div>
+      <div class="layer"><div class="n">12</div><h4>Observability</h4><p>Como depurar — sem isso, o sistema é caixa-preta.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="tag">Fontes</span>Materiais usados nesta página</h2>
+    <ul class="links">
+      <li><a href="https://www.digitalapplied.com/blog/88-percent-ai-agents-never-reach-production-failure-framework" target="_blank" rel="noopener">Why 88% of AI Agents Fail Production — Digital Applied</a><div class="desc">Framework de 7 padrões de falha; escopo e dados = 61% das falhas.</div></li>
+      <li><a href="https://atlan.com/know/agent-harness-failures-anti-patterns/" target="_blank" rel="noopener">AI Agent Harness Failures: 13 Anti-Patterns — Atlan</a><div class="desc">Tiers arquitetural/execução/dados (~55% na camada de dados); erro composto.</div></li>
+      <li><a href="https://arxiv.org/html/2603.06847v1" target="_blank" rel="noopener">Characterizing Faults in Agentic AI (taxonomy) — arXiv 2026</a><div class="desc">Taxonomia de falhas: cognição, orquestração, estado, coordenação multi-agente.</div></li>
+      <li><a href="https://galileo.ai/blog/why-multi-agent-systems-fail" target="_blank" rel="noopener">Why Multi-Agent Systems Fail — Galileo</a><div class="desc">Custo de coordenação exponencial; paralelismo vs. orquestração.</div></li>
+      <li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/04/updating-taxonomy-failure-modes-agentic-ai-systems-year-red-teaming-taught-us/" target="_blank" rel="noopener">Failure Modes in Agentic AI (red teaming) — Microsoft Security 2026</a><div class="desc">7 modos novos: injection em cadeia, goal hijacking, HitL bypass.</div></li>
+      <li><a href="https://www.augmentcode.com/guides/why-multi-agent-llm-systems-fail-and-how-to-fix-them" target="_blank" rel="noopener">Why Multi-Agent LLM Systems Fail — Augment Code</a><div class="desc">Taxa de falha 41–86,7%; ambiguidade de spec e coordenação = 79% das quebras.</div></li>
+      <li><a href="https://blog.whoisjsonapi.com/ai-agent-engineering-in-2026-architectures-patterns-and-real-world-systems/" target="_blank" rel="noopener">AI Agent Engineering in 2026 — whoisjsonapi</a><div class="desc">Desafios de coordenação, recursos e confiabilidade em sistemas distribuídos.</div></li>
+    </ul>
+  </section>
+
+  <p><a class="back" href="index.html">← Voltar ao início</a></p>
+
+</main>
+
+<footer>
+  Repositório <strong>estudo-ai-os</strong> · documentação e base de estudo · material curado e gratuito · atualizado em 13/08/2026
+</footer>
+</body>
+</html>
